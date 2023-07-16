@@ -1,9 +1,19 @@
 .secondSection {
+  position: relative;
+  padding-top: 56px;
   ul {
+    top: 0;
+    width: 100%;
     height: 56px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: absolute;
+    background: rgb(232, 113, 44);
+
+    &.isFixed {
+      position: fixed;
+    }
 
     li {
       position: relative;
@@ -27,8 +37,9 @@
       }
     }
   }
+  // tab content
   section {
-    // tab content
+    scroll-margin: 56px; //一次性设置滚动边距
     padding: 16px;
     h2 {
       color: white;
@@ -38,6 +49,41 @@
       margin-top: 16px;
       width: 100%;
       border-radius: 6px;
+    }
+  }
+  // App内打开
+  .btnWrapper {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0 16px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0;
+    // 避免从下向上滑时突然消失 先退到最下面
+    transform: translateY(64px);
+    transition: opacity 0.3s, transform 0.3s;
+
+    img {
+      width: 100px;
+    }
+    button {
+      border: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      color: white;
+      background: #fb7299;
+    }
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
